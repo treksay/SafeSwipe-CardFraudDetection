@@ -1,0 +1,107 @@
+﻿@page
+@model FraudDetectionMaster.Pages.TransactionModel
+
+@{
+    ViewData["Title"] = "Transaction";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Transactions</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+</div>
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].Step)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].NameOrig)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].OldBalanceOrg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].NewBalanceOrg)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].NameDest)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].OldBalanceDest)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].newbalanceDest)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transaction[0].IsFraud)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.Transaction)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Step)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameOrig)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OldBalanceOrg)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewBalanceOrg)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameDest)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OldBalanceDest)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.newbalanceDest)
+                        </td>
+                        <td>
+                          
+                            @if (item.IsFraud.Equals("0"))
+                            {
+                                <a class="btnn btnn-green" href="">&nbsp;</a>
+                            }
+                            else
+                            {
+                                <a class="btnn btnn-red" href="">&nbsp;</a>
+                            }
+                        </td>
+                        <td>                        
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |                  
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
